@@ -2,7 +2,7 @@ package com.ferragnez.party;
 
 import java.util.Scanner;
 
-public class CheckGuest {
+public class Bonus {
     public static void main(String[] guestName) {
 
         String nome;
@@ -11,8 +11,7 @@ public class CheckGuest {
         Scanner input = new Scanner(System.in);
         System.out.println("Inserisci il tuo nome: ");
         nome = input.nextLine();
-
-        System.out.println("-------------------------------------");     
+             
         System.out.println("Inserisci il tuo cognome: ");
         cognome = input.nextLine();
 
@@ -25,16 +24,20 @@ public class CheckGuest {
         
         System.out.println("Verifica accessi alla festa Ferragnez:");
         System.out.println("-------------------------------------");
-            
-            for (int i=0; i<arrayInvitatiAutorizzati.length; i++) {
-                if (nomeCompleto.equals(arrayInvitatiAutorizzati[i])) {
-                    System.out.println(nomeCompleto + ": Accesso CONSENTITO - Benvenuto alla festa!");
+        boolean trovato = false;
+        int i = 0;
+        while (i<arrayInvitatiAutorizzati.length) {
+            if (nomeCompleto.equals(arrayInvitatiAutorizzati[i])) {
+            System.out.println(nomeCompleto + ": Accesso CONSENTITO - Benvenuto alla festa!");
 
-                    break;
-                } else if (i == arrayInvitatiAutorizzati.length - 1) {
-                    // Se l'ospite non è presente nell'array, stampiamo un messaggio di accesso negato
-                    System.out.println(nomeCompleto + ": Accesso NEGATO - Non sei nella lista degli invitati.");
-                }
+                trovato = true;
+                break;
             }
+            i++;
+
+            }   if (!trovato) {
+                    System.out.println(nomeCompleto + ": Accesso NEGATO - Non sei nella lista degli invitati.");
         }
     }
+}
+
